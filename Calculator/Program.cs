@@ -56,6 +56,7 @@ namespace Calculator
             Console.WriteLine("Press Any Key To Exit");
             Console.ReadKey();
         }
+        
         static float Sum(float number1, float number2) =>
             number1 + number2;
 
