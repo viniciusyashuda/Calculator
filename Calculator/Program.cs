@@ -6,76 +6,66 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            float number1, number2;
+            int operation = 1;
 
-            float number1, number2, choice;
-
-            Console.Write("Enter a number: ");
-            number1 = float.Parse(Console.ReadLine());
-
-            Console.Write("Enter another number: ");
-            number2 = float.Parse(Console.ReadLine());
-
-            Console.WriteLine("Choose an operation, typing the correspondent number: (1) sum, (2) subtraction, (3) multiplication or (4) division");
-            Console.Write("Option: "); choice = int.Parse(Console.ReadLine());
-
-            if ((choice != 1) & (choice != 2) & (choice != 3) & (choice != 4))
+            while (operation > 0 && operation < 5)
             {
+                Console.Write("Enter a number: ");
+                number1 = float.Parse(Console.ReadLine());
 
-                Console.WriteLine("Choose a valid operation");
+                Console.Write("Enter another number: ");
+                number2 = float.Parse(Console.ReadLine());
 
-            }
-            else
-            {
+                Console.WriteLine("Choose an operation, typing the correspondent number: " +
+                    "\n(1) sum \n(2) subtraction \n(3) multiplication \n(4) division \n(0) exit"
+                );
+                Console.Write("Option: ");
+                operation = int.Parse(Console.ReadLine());
 
-                if (choice == 1)
+                switch (operation)
                 {
+                    case 1:
+                        Console.WriteLine("Result: " + Sum(number1, number2));
+                        break;
 
-                    Console.WriteLine("{0} + {1} = {2}", number1, number2, number1 + number2);
+                    case 2:
+                        Console.WriteLine("Result: " + Subtraction(number1, number2));
+                        break;
 
+                    case 3:
+                        Console.WriteLine("Result: " + Multiplication(number1, number2));
+                        break;
+
+                    case 4:
+                        Console.WriteLine(
+                            "Result: " +
+                            (number2 == 0 ? Division(number1, number2) : "Can not divide by 0")
+                        );
+                        break;
+
+                    default:
+                        break;
                 }
-                else
-                {
 
-                    if (choice == 2)
-                    {
-
-                        Console.WriteLine("{0} - {1} = {2}", number1, number2, number1 - number2);
-
-                    }
-                    else
-                    {
-
-                        if (choice == 3)
-                        {
-
-                            Console.WriteLine("{0} * {1} = {2}", number1, number2, number1 * number2);
-
-                        }
-                        else
-                        {
-
-                            if (choice == 4)
-                            {
-
-                                if (number2 != 0)
-                                {
-
-                                    Console.WriteLine("{0} / {1} = {2}", number1, number2, number1 / number2);
-
-                                }
-                                else
-                                {
-
-                                    Console.WriteLine("The denominator can not be 0!");
-
-                                }
-                            }
-                        }
-                    }
-                }
+                Console.WriteLine("\nPress Any Key To Continue");
+                Console.ReadKey();
+                Console.Clear();
             }
 
+            Console.WriteLine("Press Any Key To Exit");
             Console.ReadKey();
         }
+        static float Sum(float number1, float number2) =>
+            number1 + number2;
+
+        static float Subtraction(float number1, float number2) =>
+            number1 - number2;
+
+        static float Multiplication(float number1, float number2) =>
+            number1 * number2;
+
+        static float Division(float number1, float number2) =>
+            number1 / number2;
     }
 }
